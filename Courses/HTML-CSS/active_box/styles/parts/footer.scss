@@ -1,0 +1,70 @@
+// Footer section
+.footer {
+  background-color: #3a3e64;
+  width: 100%;
+  
+  h1 {
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+  }
+  
+  p {
+    padding-top: 15px;
+    text-align: center;
+    color: $blue_gray;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+  }
+  
+  .footerGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 65px 0 65px 0;
+    width: 80%;
+    margin: auto;
+    
+    .footerSocial {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 5px;
+      padding-top: 20px;
+      width: 40%;
+      margin: auto;
+    }
+    
+    .footerSocial a {
+      text-align: center;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 15px;
+    }
+    
+    .footerSocial a:hover {
+      background-color: #e84545;
+      color: white;
+      transition: .5s;
+    }
+    
+    .footerLicense {
+      background-color: #313454;
+      padding: 20px;
+    }
+    
+    .footerLicense span {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px;
+    }
+    
+    .footerLicense span:first-of-type {
+      color: #e84545;
+    }
+    
+    .footerLicense span:last-of-type {
+      color: #fff;
+    }
+  }
+  
+}

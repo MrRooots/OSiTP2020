@@ -1,0 +1,33 @@
+// Features section
+.features {
+  width: 100%;
+  padding-bottom: 150px;
+  
+  .featuresContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 60px 80px;
+    
+    padding-top: 115px;
+    margin: auto;
+    width: 80%;
+
+    .featuresItem {
+      text-align: center;
+      
+      h3 {
+        padding: 25px 0 20px 0;
+        font-family: 'Raleway', sans-serif;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+      }
+      
+      p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 14px;
+        color: $dark_gray;
+      }
+    }
+  }
+}

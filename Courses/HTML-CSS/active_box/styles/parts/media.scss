@@ -1,0 +1,21 @@
+// Small screens style overrides
+@media screen and (max-width: 426px) {
+  .teamContainer {
+    text-align: center;
+  }
+}
+
+// Wide screens styles overrides
+@media screen and (min-width: 1800px) {
+  .features {
+    .featuresContainer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 60px 80px;
+      
+      padding-top: 115px;
+      margin: auto;
+      width: 80%;
+    }
+  }
+}

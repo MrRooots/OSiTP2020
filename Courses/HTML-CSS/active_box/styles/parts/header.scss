@@ -1,0 +1,100 @@
+// Site header: navbar + intro banner
+.header {
+  width: 100%;
+  background-image: url(../img/bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  // Navigation bar
+  .headerContainer {
+    margin: auto;
+    width: 80%;
+    
+    .navbar {
+      display: grid;
+      grid-template-columns: 50% 50%;
+      align-items: center;
+      padding: 40px;
+      
+      border-bottom: 1px solid $dark_gray;
+      
+      .logo {
+        width: fit-content;
+      }
+
+      .navbarList {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 30px;
+        
+        li {
+          height: 100%;
+        }
+        
+        a {
+          display: block;
+        
+          font-family: 'Raleway', sans-serif;
+          font-weight: bold;
+          font-size: 13px;
+          text-align: center;
+          text-transform: uppercase;
+          color: $blue_gray;
+        }
+        
+        a:hover {
+          color: #fff;
+          transition: .5s;
+        }
+      }
+    }
+  }
+
+  // Intro banner
+  .banner {
+    width: 80%;
+    margin: auto;
+    padding-bottom: 150px;
+
+    .bannerLogo {
+      padding: 100px 0 35px 0;
+    
+      font-family: 'Open Sans', sans-serif;
+      font-size: 65px;
+      font-weight: 700;
+      color: #fff;
+      
+      text-align: center;
+      text-transform: uppercase;
+    }
+    
+    p {
+      font-size: 22px;
+      color: #fff;
+      text-align: center;
+      font-family: 'Raleway', sans-serif;
+    }
+    
+    .bannerButton {
+      display: block;
+      margin: 75px auto;
+      padding: 15px;
+      width: 20%;
+      min-width: 150px;
+    
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: $link_red;
+      border-radius: 5px;
+    }
+    
+    .bannerButton:hover {
+      background-color: $link_hover_red;
+      transition: .5s;
+    }
+  }
+}

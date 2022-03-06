@@ -1,0 +1,10 @@
+// Works section text animations
+@keyframes movingUpToDown {
+  from {top: -5vh;}
+  to {top: 0;}
+}
+
+@keyframes movingDownToUp {
+  from {top: 5vh;}
+  to {top: 0;}
+}

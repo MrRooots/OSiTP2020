@@ -1,0 +1,112 @@
+.slider {
+  width: 100%;
+
+  .sliderContainer {
+    display: grid;
+    grid-template-columns: 50% 50%;
+
+    .sliderImage {
+      img {
+        display: block;
+        width: 100%;
+      }
+    }
+    
+    .sliderQuote {
+      display: grid;
+      text-align: left;
+      background-color: #53354a;
+      
+      h1 {
+        font-family: 'Cardo', serif;
+        font-style: italic;
+        font-size: 36px;
+        font-weight: normal;
+        color: white;
+      }
+      
+      p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 13px;
+        font-weight: bold;
+        color: white;
+        padding-top: 20px;
+      }
+      
+      .sliderQuoteText {
+        width: 80%;
+        margin: auto;
+        align-self: center;
+      }
+    }
+    
+    .sliderControl {
+      display: grid;
+      grid-auto-flow: column;
+      width: 10%;
+      margin: auto;
+      
+      .circle {
+        height: 10px;
+        width: 10px;
+        border-radius: 25px;
+        background-color: #755d6e;
+        
+      }
+      
+      .circle:hover {
+        cursor: pointer;
+        background-color: #fff;
+        transition: .5s;
+      }
+
+      
+      .--Active {
+        background-color: #fff;
+      }
+    }
+  }
+  
+  .startContainer {
+    width: 80%;
+    margin: auto;
+    text-align: center;
+  
+    h1 {
+      padding: 100px 0 10px 0;
+      font-family: 'Raleway', sans-serif;
+      font-weight: 300;
+      font-size: 28px;
+    }
+    
+    p {
+      font-family: 'Raleway', sans-serif;
+      font-weight: bold;
+      font-size: 13px;
+    }
+
+    .startButton {
+      display: block;
+      margin: 75px auto;
+      padding: 15px;
+      width: 20%;
+      min-width: 150px;
+    
+      font-size: 13px;
+      font-weight: 600;
+      font-family: 'Raleway', sans-serif;
+      text-align: center;
+      text-transform: uppercase;
+      color: #fff;
+      background-color: $link_red;
+      border-radius: 5px;
+      
+    }
+    .startButton:hover {
+      background-color: $link_hover_red;
+      transition: .5s;
+    }
+    
+  }
+}
+
