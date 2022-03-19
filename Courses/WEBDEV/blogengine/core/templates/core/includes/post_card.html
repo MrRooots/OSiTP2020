@@ -1,0 +1,43 @@
+{% load tz %}
+<div class="card" style="width: 70%; margin: auto auto 40px;">
+  <div class="card-body">
+    <div class="headerContainer" style="display: flex; justify-content: space-between">
+      <h4 class="card-title">{{ post.title }}</h4>
+      {% if details %}
+        <div class="headerControls" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 25px">
+          <a href="{{ post.get_update_url }}" style="color: green; font-size: 18px"><i class="fas fa-edit"></i></a>
+          <a href="{{ post.get_delete_url }}" style="color: red; font-size: 18px"><i class="fas fa-trash"></i></a>
+        </div>
+        {% endif %}
+      </div>
+      {% if not details %}
+      <p class="card-text">{{ post.body|linebreaks|truncatewords:40 }}</p>
+      <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read more...</a>
+      {% else %}
+      <p class="card-text">{{ post.body|linebreaks|safe }}</p>
+      {% endif %}
+    </div>
+    
+    <div class="card-footer text-muted" style="display: flex; justify-content: space-between; width: 100%;">
+      <p style="margin: 0;">Published: {{ post.created_at }}</p>
+      <p style="margin: 0;">
+        {% if post.get_date_difference %}
+          Edited: {{ post.updated_at }}
+        {% endif %}
+      </p>  
+    </div>
+
+  {# Load post tags #}
+  {% with tags=post.tags.all %}
+    {% if tags %}
+      <div class="card-footer text-muted" style="display: flex;">
+        <p style="margin: 0; padding-right: 5px;">Tags:</p>
+        {% for tag in tags %}
+          <a href="{{ tag.get_absolute_url }}">
+            <span class="badge bg-info text-light" style="margin-right: 10px;">{{ tag.title }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    {% endif %}
+  {% endwith %}
+</div>

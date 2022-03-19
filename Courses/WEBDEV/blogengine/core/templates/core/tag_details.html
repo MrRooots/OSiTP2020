@@ -1,0 +1,17 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Tag {{ tag.title }} {% endblock title %}
+
+{% block content %}
+    <div class="header" style="padding: 25px 0 50px 0; text-align: center;">
+      <h1 style="text-align: center; letter-spacing: 5px; font-size: 60px;">_RelatedPosts_</h1>
+      <br>
+      <h3 style="text-align: center;">
+        /* On this page you can see all posts <br> with <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a> tag,
+        loaded from database */
+      </h3>
+    </div>
+    {% for post in tag.posts.all %}
+      {% include 'core/includes/post_card.html' %}
+    {% endfor %}
+{% endblock content %}

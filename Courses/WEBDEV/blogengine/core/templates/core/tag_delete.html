@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Delete Tag {% endblock title %}
+
+{% block content %}
+  {% with "On this page you can delete selected tag <br> Are you absolutely sure you want to delete "|add:tag.title|add:" tag?" as content %}
+    {% include 'core/includes/page_header.html' with title="DeleteTag" content=content|safe %}
+  {% endwith %}
+  <form action="{% url 'tag_delete' slug=tag.slug%}" method="POST">
+    {% csrf_token %}
+    <div class="buttonContainer" style="display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10%; width: 500px; margin: auto; padding-top: 30px;">
+      <button type="submit" class="btn btn-success">Confirm</button>
+      <a href="{% url 'display_tags' %}" class="btn btn-danger">Cancel</a>
+    </div>
+  </form>
+{% endblock content %}

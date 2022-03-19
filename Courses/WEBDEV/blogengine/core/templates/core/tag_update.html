@@ -1,0 +1,32 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Update Tag {% endblock title %}
+
+{% block content %}
+  {% include 'core/includes/page_header.html' with title="UpdateTag" content="On this page you can modify the existed <br> tag using the form below" %}
+  <div class="formContainer" style="width: 50%; margin: auto;">
+    <form action="{{ tag.get_update_url }}" method="POST">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="form-group mb-3">
+          {% if field.errors %}
+            <div class="alert alert-danger">
+              {{ field.errors }}
+            </div>
+          {% endif %}
+          {% if field.label == 'Tags' %}
+            <label class="form-label">{{ field.label }} (select multiple with ctrl)</label>
+          {% else %}
+            <label class="form-label">{{ field.label }}</label>
+          {% endif %}
+          {{ field }}
+        </div>
+      {% endfor %}
+
+      <div class="buttonContainer" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10%; width: 80%; margin: auto; padding-top: 30px;">
+        <button type="submit" class="btn btn-success">Update</button>
+        <a href="{% url 'display_tags' %}" class="btn btn-danger">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

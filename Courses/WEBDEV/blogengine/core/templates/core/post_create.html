@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Create Post {% endblock title %}
+
+{% block content %}
+  {% include 'core/includes/page_header.html' with title="CreatePost" content="On this page you can add a new post <br> using the form below" %}
+  <div class="formContainer" style="width: 70%; margin: auto;">
+    <form action="{% url 'create_post' %}" method="POST">
+      {% csrf_token %}
+
+      {# Render form fields #}
+      {% for field in form %}
+        <div class="form-group mb-3">
+
+          {# Render form POST errors#}
+          {% if field.errors %}
+            <div class="alert alert-danger">
+              {{ field.errors }}
+            </div>
+          {% endif %}
+
+          {# Render tags selection #}
+          {% if field.label == 'Tags' %}
+            <label class="form-label">{{ field.label }} (select multiple with ctrl)</label>
+          {% else %}
+            <label class="form-label">{{ field.label }}</label>
+          {% endif %}
+          {{ field }}
+
+        </div>
+      {% endfor %}
+
+      <div class="buttonContainer"
+           style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10%; width: 80%; margin: auto; padding-top: 30px;">
+        <button type="submit" class="btn btn-success">Create</button>
+        <a href="{% url 'display_posts' %}" class="btn btn-danger">Cancel</a>
+      </div>
+    </form>
+  </div>
+{% endblock content %}

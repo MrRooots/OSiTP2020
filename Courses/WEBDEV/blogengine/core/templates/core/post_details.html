@@ -1,0 +1,10 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {{ post.title|truncatewords:3 }} {% endblock title %}
+
+{% block content %} 
+  {% include 'core/includes/page_header.html' with title=post.title|cut:" " content="On this page you can read the<br> selected post in its entirety" %}
+  <div class="container">
+    {% include 'core/includes/post_card.html' with details=True %}
+  </div>
+{% endblock content %}

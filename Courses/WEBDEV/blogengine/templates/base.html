@@ -1,0 +1,134 @@
+<!-- {% load static %} -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="https://kit.fontawesome.com/7b52eafde7.js" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+  </script>
+
+  <!-- <link rel="icon" href="{% static 'img/favicon.png' %}"> -->
+
+  <style>
+    .body {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .body::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+
+  <title>BlogEngine | {% block title %}Welcome{% endblock title %}</title>
+</head>
+<body class="body">
+<nav class="navbar navbar-expand-lg navbar-light bg-white">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'index_page' %}" style="margin-bottom: 2px">
+      <!-- <img src="{% static 'img/icon.png' %}" alt="" width="30" height="30" class="d-inline-block align-text-top"> -->
+      BlogEngine
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false" style="padding-right: 15px">
+            Posts
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'display_posts' %}">All Posts</a></li>
+            <li><a class="dropdown-item" href="{% url 'create_post' %}">Create Post</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li style="background-color: orange;">
+              <a class="dropdown-item" href="{% url 'generate_samples' %}">!!!DB_Load!!! <br> Generate posts</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+             aria-expanded="false" style="padding-right: 15px">
+            Tags
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="{% url 'display_tags' %}">All Tags</a></li>
+            <li><a class="dropdown-item" href="{% url 'create_tag' %}">Create Tag</a></li>
+          </ul>
+        </li>
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/admin/" style="padding-right: 15px">Admin Panel</a>
+        </li> -->
+      </ul>
+      
+      <form class="d-flex" action="{% url 'display_posts' %}">
+        <input class="form-control me-2" type="search" placeholder="Search posts..." aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+    </div>
+  </div>
+</nav>
+
+<div class="content" style="width: 70%; margin: 0 auto;">
+  {% block content %}
+    <div class="container" style="display: flex; flex-direction: column; place-content: center; height: 80vh;">
+      <h1 style="text-align: center; letter-spacing: 5px; font-size: 100px;">_WELCOME_</h1>
+      <br>
+      <h2 style="text-align: center;">/* This is simple web application<br>that allow you to manage your posts */</h2>
+    </div>
+  {% endblock content %}
+    
+</div>
+
+{% if page %}
+  <nav aria-label="..." style="padding: 25px 0; margin-top: auto;">
+    <ul class="pagination justify-content-center">
+      <li class="page-item {% if not previous_url %} disabled {% endif %}">
+        <a class="page-link" href="{{ previous_url }}" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      
+      {% for n in page.paginator.page_range %}
+        {% if page.number == n %}
+          <li class="page-item active">
+            <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+          </li>
+        {% elif n > page.number|add:-5 and n < page.number|add:5 %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ n }}">{{ n }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+      
+      <li class="page-item {% if not next_url %} disabled {% endif %}">
+        <a class="page-link" href="{{ next_url }}">Next</a>
+      </li>
+    </ul>
+  </nav>
+{% endif %}
+
+<footer style="padding-bottom:25px; {% if not page %} margin-top: auto; {% endif %}">
+  <div class="footerContainer" style="text-align: center;">
+    Powered with <a href="https://getbootstrap.com/" style="text-decoration: none;">Bootstrap v5.0</a>
+    &#10084;&#65039;
+  </div>
+</footer>
+</body>
+
+</html>

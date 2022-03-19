@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Delete Post {% endblock title %}
+
+{% block content %}
+  {% with "On this page you can delete selected post <br> Are you absolutely sure you want to delete "|add:post.title|add:" post?" as content %}
+    {% include 'core/includes/page_header.html' with title="DeletePost" content=content|safe %}
+  {% endwith %}
+  <form action="{% url 'post_delete' slug=post.slug%}" method="POST">
+    {% csrf_token %}
+    <div class="buttonContainer" style="display: grid; grid-template-rows: 1fr 1fr; grid-gap: 10%; width: 500px; margin: auto; padding-top: 30px;">
+      <button type="submit" class="btn btn-success">Confirm</button>
+      <a href="{% url 'display_posts' %}" class="btn btn-danger">Cancel</a>
+    </div>
+  </form>
+{% endblock content %}

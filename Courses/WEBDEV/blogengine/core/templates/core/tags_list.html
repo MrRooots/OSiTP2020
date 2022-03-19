@@ -1,0 +1,24 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Tags {% endblock title %}
+
+{% block content %}
+  <div class="container" style="width: 50%; margin: auto; max-width: 1080px">
+    {% include 'core/includes/page_header.html' with title="Tags" content="On this page you can see all tags <br> loaded from database" %}
+    <ul style="margin: 0;">
+      {% for tag in page.object_list %}
+        <li>
+          <div class="container" style="display: flex; justify-content: space-between">
+            <h4 style="padding: 10px 0 10px 0;">
+              <a href="{{ tag.get_absolute_url }}">{{ tag.title }}</a>
+            </h4>
+            <div class="headerControls" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 25px">
+              <a href="{{ tag.get_update_url }}" style="color: green; font-size: 18px"><i class="fas fa-edit"></i></a>
+              <a href="{{ tag.get_delete_url }}" style="color: red; font-size: 18px"><i class="fas fa-trash"></i></a>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock content %}

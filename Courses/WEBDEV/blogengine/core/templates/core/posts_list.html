@@ -1,0 +1,14 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Posts {% endblock title %}
+
+{% block content %} 
+  {% if search_query %}
+    {% include 'core/includes/page_header.html' with title="Posts" content="On this page you can see all posts <br> corresponding to your query" %}
+  {% else %}
+    {% include 'core/includes/page_header.html' with title="Posts" content="On this page you can see all posts <br> loaded from database" %}
+  {% endif %}
+  {% for post in page.object_list %}
+    {% include 'core/includes/post_card.html'%}
+  {% endfor %}
+{% endblock content %}
