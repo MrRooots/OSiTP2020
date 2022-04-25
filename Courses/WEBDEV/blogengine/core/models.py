@@ -1,5 +1,5 @@
-from sqlite3 import IntegrityError
 import time
+from sqlite3 import IntegrityError
 from django.urls import reverse
 from django.db import models
 from django.utils.text import slugify
